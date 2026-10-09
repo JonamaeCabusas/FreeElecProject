@@ -113,6 +113,35 @@ export default function HomeScreen() {
     }
   />
 </View>
+
+{/* CLINT BARRIGA PROFILE CARD & DATA ROUTING */}
+<View style={styles.memberCard}>
+  {/* Image photo placeholder display */}
+  <Image
+    source={require('../../assets/images/clint.jpg')}
+    style={styles.image}
+    accessibilityLabel="Clint Harold Barriga"
+  />
+  {/* Member name button setup with custom routing parameters */}
+  <Button
+    title="CLINT BARRIGA"
+    color="#d94f9c"
+    onPress={() =>
+      router.push({
+        pathname: '/profile',
+        params: {
+          image: 'clint',
+          name: 'Clint Harold Barriga',
+          role: 'Member',
+          bio: 'Passionate about coding and contributing to the Chaos Crew project.',
+          love: 'React Native',
+          fun: 'Late night coding',
+          email: 'clint.harold.barriga@chaoscrew.com',
+        },
+      })
+    }
+  />
+</View>
           </View>
         </View>
 
