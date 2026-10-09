@@ -5,7 +5,7 @@ import { Button, Image, Pressable, ScrollView, StyleSheet, Text, View } from 're
 export default function HomeScreen() {
   // Task 2: Code useState task checkbox (State management para sa 4x4 matrix sa checkboxes)
   const [columns, setColumns] = useState([
-    [false, false, false, false],
+    [true, false, false, false],
     [false, false, false, false],
     [false, false, false, false],
     [false, false, false, false],
@@ -84,6 +84,64 @@ export default function HomeScreen() {
                 }
               />
             </View>
+            
+{/* STEVEN ARMECIN PROFILE CARD & DATA ROUTING */}
+<View style={styles.memberCard}>
+  {/* Image component gamit ang profile image ni Steven */}
+  <Image
+    source={require('../../assets/images/steven.jpg')}
+    style={styles.image}
+    accessibilityLabel="Steven Lee Dave Armecin"
+  />
+  {/* Button para sa navigation papunta sa profile detail page */}
+  <Button
+    title="STEVEN ARMECIN"
+    color="#d94f9c"
+    onPress={() =>
+      router.push({
+        pathname: '/profile',
+        params: {
+          image: 'steven',
+          name: 'Steven Lee Dave Armecin',
+          role: 'Member',
+          bio: 'A creative problem-solver from Catmon who loves turning simple ideas into real things that help people.',
+          love: 'Creating Dances/Dancing, Playing Pets, Adventures,Riding and Everything that makes me sweat',
+          fun: 'I can think both like an artist and a coder — rare combo.',
+          email: 'steven.lee.dave.armecin@chaoscrew.com',
+        },
+      })
+    }
+  />
+</View>
+
+{/* CLINT BARRIGA PROFILE CARD & DATA ROUTING */}
+<View style={styles.memberCard}>
+  {/* Image photo placeholder display */}
+  <Image
+    source={require('../../assets/images/clint.jpg')}
+    style={styles.image}
+    accessibilityLabel="Clint Harold Barriga"
+  />
+  {/* Member name button setup with custom routing parameters */}
+  <Button
+    title="CLINT BARRIGA"
+    color="#d94f9c"
+    onPress={() =>
+      router.push({
+        pathname: '/profile',
+        params: {
+          image: 'clint',
+          name: 'Clint Harold Barriga',
+          role: 'Member',
+          bio: 'Passionate about coding and contributing to the Chaos Crew project.',
+          love: 'React Native',
+          fun: 'Late night coding',
+          email: 'clint.harold.barriga@chaoscrew.com',
+        },
+      })
+    }
+  />
+</View>
           </View>
         </View>
 
