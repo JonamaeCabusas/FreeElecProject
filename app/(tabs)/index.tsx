@@ -11,31 +11,38 @@ export default function HomeScreen() {
     [false, false, false, false],
   ]);
 
-  const [checkedActivities, setCheckedActivities] = useState<string[]>([]);
 
   // Task 1: Label list sa mga activities kada column
   const taskLabels = [
     ['Setup Router Pages', 'Code useState task checkbox', 'Pass Member data using Route Params', 'Check all functionality'],
-    ['Style Progress Counter Box', 'Design Activities Container(index bottom part)', 'Style Member Task Boxes', 'Design Task Checkbox Buttons'],
-    ['Design Profile Page Header ', 'Arrange member picture and text details side-by-side', 'Build Two-Column Grid Boxes ', 'Format email banner and navigation back button'],
+    ['Style Progress Counter Box', 'Design Activities Container(index bottom part)', 'Add profile details to index file', 'Design Task Checkbox Buttons'],
+    ['Design Profile Page ', 'Arrange member picture and text details side-by-side', 'Build Two-Column Grid Boxes ', 'Format email banner and navigation back button'],
     ['Design Profiles Container', 'Design photo placeholder boxes', 'Style Member Name Buttons', 'Align Top Section Spacing'],
   ];
 
-  // Tagalog: Subaybayan sa console kung anong mga tasks ang active/naka-check
+  // State container to track the list of currently checked task names.
+  const [checkedActivities, setCheckedActivities] = useState<string[]>([]);
+ 
+  // Automatically logs the active checked activities to the console whenever the list updates.
   useEffect(() => {
     console.log('[ACTIVE CHECKED ACTIVITIES]:', checkedActivities);
   }, [checkedActivities]);
 
-  // Tagalog: Logic para sa pag-toggle o pag-check/uncheck ng mga checkboxes
   const toggleCheckbox = (colIdx: number, rowIdx: number) => {
+
+    // Finds the exact task name and its current check status based on the clicked column and row.
     const taskName = taskLabels[colIdx][rowIdx];
     const isCurrentlyChecked = columns[colIdx][rowIdx];
+    
 
+  // Updates the 4x4 matrix state by flipping the boolean value of the clicked checkbox without affecting others.
     const updated = columns.map((col, cI) =>
       col.map((isChecked, rI) => (cI === colIdx && rI === rowIdx ? !isChecked : isChecked))
     );
     setColumns(updated);
+    
 
+    // Adds the task to the list if newly checked or removes it via filtering if unchecked.
     if (!isCurrentlyChecked) {
       setCheckedActivities((prev) => [...prev, taskName]);
     } else {
@@ -58,7 +65,7 @@ export default function HomeScreen() {
           </View>
 
           <View style={styles.memberRow}>
-            {/* Task 3: Pass Member data using Route Params (Jona Profile Card & Data Routing) */}
+            {/* JONA MAE CABUSAS PROFILE CARD & DATA ROUTING */}
             <View style={styles.memberCard}>
               <Image
                 source={require('../../assets/images/jona.jpg')}
@@ -184,9 +191,10 @@ export default function HomeScreen() {
           <View style={styles.activitiesRow}>
             {columns.map((column, colIdx) => {
               const checkedCount = column.filter(Boolean).length;
+
+
               return (
                 <View key={colIdx} style={styles.activityColumn}>
-
 
                   {/* Progress counter box (0/4 score display) */}
                   <View style={styles.counterBox}>
@@ -194,6 +202,8 @@ export default function HomeScreen() {
                       {checkedCount}/{column.length}
                     </Text>
                   </View>
+
+                  
                   {/* Listahan ng Task Checkboxes */}
                   <View style={styles.taskList}>
                     {column.map((isChecked, rowIdx) => (
@@ -211,6 +221,7 @@ export default function HomeScreen() {
                 </View>
               );
             })}
+
           </View>
         </View>
       </ScrollView>
@@ -223,7 +234,7 @@ const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: '#0a0d14' },
   mainScroll: { flex: 1, width: '100%' },
   mainContent: { flexGrow: 1, paddingVertical: 24, paddingHorizontal: 24, justifyContent: 'space-evenly', alignItems: 'stretch' },
-  mainTitleBox: { alignSelf: 'center', backgroundColor: 'rgba(52, 211, 153, 0.14)', borderRadius: 999, borderWidth: 1, borderColor: 'rgba(52, 211, 153, 0.55)', paddingHorizontal: 22, paddingVertical: 10, marginTop: 4 },
+  mainTitleBox: { alignSelf: 'center', backgroundColor: 'rgba(52, 211, 153, 0.14)', borderRadius: 999, borderWidth: 1, borderColor: 'rgba(52, 211, 153, 0.55)', paddingHorizontal: 22, paddingVertical: 10, marginTop: 4, marginBottom: 50},
   mainTitleText: { fontSize: 16, fontWeight: '800', letterSpacing: 1, color: '#a7f3d0', textAlign: 'center' },
   profilesSection: { width: '100%', backgroundColor: 'rgba(56, 189, 248, 0.08)', borderRadius: 24, borderWidth: 1, borderColor: 'rgba(56, 189, 248, 0.25)', alignItems: 'center', paddingTop: 36, paddingBottom: 20, position: 'relative' },
   sectionHeaderBadge: { position: 'absolute', top: -16, backgroundColor: '#da4540', borderRadius: 999, paddingHorizontal: 50, paddingVertical: 7, borderWidth: 2, borderColor: '#0a0d14', zIndex: 2 },
