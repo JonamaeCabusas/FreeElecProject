@@ -5,7 +5,7 @@ import { Button, Image, Pressable, ScrollView, StyleSheet, Text, View } from 're
 export default function HomeScreen() {
   // Task 2: Code useState task checkbox (State management para sa 4x4 matrix sa checkboxes)
   const [columns, setColumns] = useState([
-    [true, false, false, false],
+    [false, false, false, false],
     [false, false, false, false],
     [false, false, false, false],
     [false, false, false, false],
@@ -84,6 +84,36 @@ export default function HomeScreen() {
                 }
               />
             </View>
+
+            {/* CHEENY MAE TITO PROFILE CARD & DATA ROUTING */}
+<View style={styles.memberCard}>
+  {/* Profile photo block */}
+  <Image
+    source={require('../../assets/images/cheeny.jpg')}
+    style={styles.image}
+    accessibilityLabel="Cheeny Mae Tito"
+  />
+  {/* Push route with parameters para sa akong bio, loves, ug fun facts */}
+  <Button
+    title="CHEENY MAE TITO"
+    color="#d94f9c"
+    onPress={() =>
+      router.push({
+        pathname: '/profile',
+        params: {
+          image: 'cheeny',
+          name: 'Cheeny Mae Tito',
+          role: 'Member',
+          bio: 'I have a good heart, but I won’t let people take advantage of it.',
+          love: 'WATCHING AI HAHAHHA and DANCING',
+          fun: ' Healthy love should still give you space to be yourself',
+          email: 'cheeny.mae.tito@chaoscrew.com',
+        },
+      })
+    }
+  />
+</View>
+
             
 {/* STEVEN ARMECIN PROFILE CARD & DATA ROUTING */}
 <View style={styles.memberCard}>
