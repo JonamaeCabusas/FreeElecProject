@@ -186,6 +186,8 @@ export default function HomeScreen() {
               const checkedCount = column.filter(Boolean).length;
               return (
                 <View key={colIdx} style={styles.activityColumn}>
+
+
                   {/* Progress counter box (0/4 score display) */}
                   <View style={styles.counterBox}>
                     <Text style={styles.counterText}>
@@ -216,8 +218,6 @@ export default function HomeScreen() {
   );
 }
 
-// Bisaya: Global glassmorphism aesthetic styling
-const GLASS_EDGE = 'rgba(255, 255, 255, 0.14)';
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: '#0a0d14' },
@@ -229,16 +229,16 @@ const styles = StyleSheet.create({
   sectionHeaderBadge: { position: 'absolute', top: -16, backgroundColor: '#da4540', borderRadius: 999, paddingHorizontal: 50, paddingVertical: 7, borderWidth: 2, borderColor: '#0a0d14', zIndex: 2 },
   sectionHeaderTitle: { color: '#fff', fontWeight: '800', fontSize: 13, letterSpacing: 1.5 },
   memberRow: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', width: '100%', gap: 14, paddingHorizontal: 14 },
-  memberCard: { flexGrow: 1, flexBasis: 170, maxWidth: 200, alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.07)', borderRadius: 20, borderWidth: 1, borderColor: GLASS_EDGE, paddingTop: 12, paddingBottom: 10, paddingHorizontal: 8 },
-  image: { width: 130, height: 140, backgroundColor: 'rgba(255, 255, 255, 0.08)', marginBottom: 10, borderRadius: 16, borderWidth: 2, borderColor: 'rgba(255, 255, 255, 0.22)' },
-  activitiesSection: { width: '100%', backgroundColor: 'rgba(251, 146, 60, 0.08)', borderRadius: 24, borderWidth: 1, borderColor: 'rgba(251, 146, 60, 0.25)', alignItems: 'center', paddingTop: 36, paddingBottom: 20, paddingHorizontal: 10, position: 'relative' },
+  memberCard: { flexGrow: 1, flexBasis: 170, maxWidth: 200, alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.07)', borderRadius: 20, borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.14)', paddingTop: 12, paddingBottom: 10, paddingHorizontal: 8 },
+  image: { width: 130, height: 140, backgroundColor: 'rgba(119, 44, 44, 0.08)', marginBottom: 10, borderRadius: 16, borderWidth: 2, borderColor: 'rgba(255, 255, 255, 0.22)' },
+  activitiesSection: { width: '100%', backgroundColor: 'rgba(154, 111, 75, 0.08)', borderRadius: 24, borderWidth: 1, borderColor: 'rgba(237, 115, 16, 0.25)', alignItems: 'center', paddingTop: 36, paddingBottom: 20, paddingHorizontal: 10, position: 'relative' },
   activitiesRow: { flexDirection: 'row', flexWrap: 'nowrap', justifyContent: 'space-between', alignItems: 'flex-start', width: '100%', gap: 6 },
-  activityColumn: { flex: 1, flexBasis: 0, alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.06)', borderRadius: 16, borderWidth: 1, borderColor: GLASS_EDGE, paddingVertical: 12, paddingHorizontal: 4 },
-  counterBox: { backgroundColor: 'rgba(52, 211, 153, 0.16)', borderRadius: 999, borderWidth: 1, borderColor: 'rgba(52, 211, 153, 0.5)', paddingHorizontal: 10, paddingVertical: 3, marginBottom: 12 },
-  counterText: { fontSize: 12, fontWeight: '800', color: '#6ee7b7' },
+  activityColumn: { flex: 1, flexBasis: 0, alignItems: 'center', backgroundColor: 'rgba(16, 104, 152, 0.06)', borderRadius: 16, borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.14)', paddingVertical: 12, paddingHorizontal: 4 },
+  counterBox: { backgroundColor: 'rgba(82, 195, 153, 0.16)', borderRadius: 999, borderWidth: 1, borderColor: 'rgba(31, 203, 94, 0.5)', paddingHorizontal: 10, paddingVertical: 3, marginBottom: 12 },
+  counterText: { fontSize: 12, fontWeight: '800', color: '#d7e76e' },
   taskList: { gap: 8, alignItems: 'flex-start' },
   taskRow: { flexDirection: 'row', alignItems: 'center', gap: 4 },
-  checkboxBox: { width: 20, height: 20, borderWidth: 1.5, borderColor: 'rgba(255, 255, 255, 0.45)', backgroundColor: 'rgba(255, 255, 255, 0.06)', borderRadius: 7, justifyContent: 'center', alignItems: 'center' },
+  checkboxBox: { width: 20, height: 20, borderWidth: 1.5, borderColor: 'rgba(207, 186, 21, 0.45)', backgroundColor: 'rgba(255, 255, 255, 0.06)', borderRadius: 7, justifyContent: 'center', alignItems: 'center' },
   checkboxBoxChecked: { backgroundColor: '#34d399', borderColor: '#34d399' },
   checkmark: { fontSize: 12, fontWeight: 'bold', color: '#06281b' },
   taskLabel: { fontSize: 11, fontWeight: '600', color: '#e5e7eb' },
