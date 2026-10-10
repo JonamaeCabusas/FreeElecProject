@@ -2,7 +2,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import React from 'react';
 import { Button, Image, StyleSheet, Text, View } from 'react-native';
 
-// Object map para sa dynamic image loading base sa dynamic params
+// local images for each member profile
 const profileImages = {
   jona: require('../assets/images/jona.jpg'),
   steven: require('../assets/images/steven.jpg'),
@@ -10,11 +10,9 @@ const profileImages = {
   clint: require('../assets/images/clint.jpg'),
 };
 
-const GLASS_FILL = 'rgba(255, 255, 255, 0.05)';
-const GLASS_EDGE = 'rgba(255, 255, 255, 0.14)';
 
 export default function ProfilesScreen() {
-  // Direct reading ng data gikan sa router parameters
+  // Direct reading of data gikan sa router parameters
   const { name, role, bio, love, fun, email, image } = useLocalSearchParams();
 
   return (
@@ -85,13 +83,13 @@ export default function ProfilesScreen() {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: '#0a0d14', justifyContent: 'center', alignItems: 'center', padding: 20 },
-  window: { width: '95%', maxWidth: 950, backgroundColor: GLASS_FILL, borderRadius: 28, borderWidth: 1, borderColor: GLASS_EDGE, padding: 24 },
+  window: { width: '95%', maxWidth: 950, backgroundColor: 'rgba(255, 255, 255, 0.05)', borderRadius: 28, borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.14)', padding: 24 },
   header: { backgroundColor: 'rgba(217, 79, 156, 0.14)', borderRadius: 999, borderWidth: 1, borderColor: 'rgba(217, 79, 156, 0.55)', paddingHorizontal: 22, paddingVertical: 10, alignSelf: 'center', marginBottom: 20 },
   headerText: { fontSize: 16, fontWeight: '800', letterSpacing: 1.5, color: '#f472b6', textAlign: 'center' },
   content: { gap: 18 },
   memberSummary: { backgroundColor: 'rgba(56, 189, 248, 0.12)', paddingVertical: 10, paddingHorizontal: 16, borderRadius: 14, borderWidth: 1, borderColor: 'rgba(56, 189, 248, 0.3)', alignSelf: 'flex-start' },
   summaryText: { color: '#38bdf8', fontWeight: '800', fontSize: 14, letterSpacing: 0.5 },
-  memberDetails: { flexDirection: 'row', gap: 20, alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.04)', padding: 18, borderRadius: 20, borderWidth: 1, borderColor: GLASS_EDGE },
+  memberDetails: { flexDirection: 'row', gap: 20, alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.04)', padding: 18, borderRadius: 20, borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.14)' },
   avatar: { width: 130, height: 140, borderRadius: 18, borderWidth: 2, borderColor: 'rgba(255, 255, 255, 0.22)', overflow: 'hidden', backgroundColor: 'rgba(255, 255, 255, 0.08)' },
   avatarImage: { width: '100%', height: '100%' },
   memberInfo: { flex: 1 },
