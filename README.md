@@ -1,14 +1,13 @@
 Chaos Crew Project Activities App
 
-A dark-mode, glassmorphic React Native application built with **Expo Router**. The app displays team member profiles and provides an interactive 4x4 matrix tracker for team tasks and goals.
+A dark-mode, React Native application built with Expo Router. The app displays team member profiles and provides an interactive 4x4 matrix tracker for team tasks and goals.
 
 
 Features
 
-* **Interactive Task Tracker**: A $4 \times 4$ task grid with dynamic state tracking and live completion counters (e.g., `2/4`).
-* **Profile Navigation**: Team cards equipped with dynamic parameters (`name`, `role`, `bio`, etc.) passed via Expo Router to a detailed profile screen.
-* **Glassmorphism UI**: High-contrast, dark-theme styling using translucent layers, custom borders, and color accents.
-* **Fully Responsive Grid**: Strict 4-column layout engineered to scale cleanly across devices.
+Interactive Task Tracker**: A $4 \times 4$ task grid with dynamic state tracking and live completion counters (e.g., `2/4`).
+Profile Navigation**: Team cards equipped with dynamic parameters (`name`, `role`, `bio`, etc.) passed via Expo Router to a detailed profile screen.
+
 
 
 
@@ -55,6 +54,6 @@ Tech Stack
 
 Framework**: React Native / Expo (Expo Router)
 Language**: TypeScript
-Styling**: `StyleSheet` (Dark Glassmorphism Theme)
+Styling**: `StyleSheet` 
 
-Would you like help creating a full `README.md` file complete with installation steps, or setting up the matching `/profile` screen code?
+
