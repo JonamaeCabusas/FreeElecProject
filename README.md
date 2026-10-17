@@ -1,59 +1,136 @@
-Chaos Crew Project Activities App
+Chaos Crew Project Activities Application
 
-A dark-mode, React Native application built with Expo Router. The app displays team member profiles and provides an interactive 4x4 matrix tracker for team tasks and goals.
-
-
-Features
-
-Interactive Task Tracker**: A $4 \times 4$ task grid with dynamic state tracking and live completion counters (e.g., `2/4`).
-Profile Navigation**: Team cards equipped with dynamic parameters (`name`, `role`, `bio`, etc.) passed via Expo Router to a detailed profile screen.
+An interactive cross-platform mobile screen built using **React Native**, **Expo**, and **Expo Router**. The application features a dark glassmorphic dashboard (`index.tsx`) displaying team member profile action cards alongside an interactive project activity matrix. Clicking any member card navigates seamlessly to a detailed individual profile view (`profile.tsx`) with data passed directly through route search parameters.
 
 
 
+Key Features
 
-File Structure & Overview
+1. Interactive $4 \times 4$ Task Tracking Matrix** (`index.tsx`)
 
-File / Component | Type | Description |
-
- `HomeScreen.tsx` | Main Screen | Renders the primary dashboard containing team profiles and activity columns. |
- `/profile` | Route | Destination page that receives and displays detailed member data. |
- `assets/images/*` | Static Assets | Contains profile images (`jona.jpg`, `steven.jpg`, `cheeny.jpg`, `clint.jpg`). |
+State-Driven Checkboxes**: Uses React's `useState` hook to maintain a 2D boolean array representing task states.
 
 
-How It Works
+Live Progress Counters**: Automatically calculates and updates the checked task ratio per column (e.g., `0/4`, `1/4`).
 
-1. Activity Matrix State
 
-The task grid is backed by a 2D array of boolean values. Toggling a task updates the matrix state and recalculates the progress counter for that column:
+Activity Logger**: Keeps track of active checked tasks via `checkedActivities` state and logs updates in the console via `useEffect`.
 
-```typescript
-const [columns, setColumns] = useState([
-  [false, false, false, false], // Column 1 (Jona)
-  [false, false, false, false], // Column 2 (Steven)
-  [false, false, false, false], // Column 3 (Cheeny)
-  [false, false, false, false], // Column 4 (Clint)
-]);
+
+4 Distinct Member Activity Columns**: Pre-configured task lists covering setup, styling, profile design, and container alignments.
 
 
 
-2. Navigation with Parameters
+2. **Dynamic Member Profile Route** (`profile.tsx`)
 
-When a profile button is pressed, Expo Router passes team details directly to the `/profile` route:
+Route Parameter Integration**: Uses `useLocalSearchParams()` to dynamically populate profile details (`name`, `role`, `bio`, `love`, `fun`, `email`, `image`).
 
-```typescript
-router.push({
-  pathname: '/profile',
-  params: { name: 'Jona Mae Cabusas', role: 'Leader', ... }
-});
+
+Side-by-Side Detail View**: Arranges profile picture and text info in a flexible row view (`flexDirection: 'row'`).
+
+
+Two-Column Highlight Cards**: Displays "Things I Love" and "Fun Facts" in customized grid boxes.
+
+
+Contact & Navigation**: Features a styled email banner and a direct `router.back()` button to return to the main dashboard.
+
+
+
+3. **Dark Glassmorphic UI/UX**
+
+* Styling constructed with custom translucency (`rgba` colors) to deliver a modern, dark-theme glass aesthetic across both screens.
+
+
+* Positioned header badges, custom border glows, and crisp typography.
+
+
+
+---
+
+## 📁 File & Project Structure
+
+```text
+├── assets/
+│   └── images/
+│       ├── jona.jpg        # Profile image asset
+│       ├── steven.jpg      # Profile image asset
+│       ├── cheeny.jpg      # Profile image asset
+│       └── clint.jpg       # Profile image asset
+├── app/
+│   ├── index.tsx           # Home Screen (Dashboard & 4x4 Activity Matrix)
+│   └── profile.tsx         # Member Profile Detail Screen
 
 ```
 
 ---
 
-Tech Stack
+## 👥 Team Members & Initial Data Setup
 
-Framework**: React Native / Expo (Expo Router)
-Language**: TypeScript
-Styling**: `StyleSheet` 
+The dashboard hosts custom profiles and tasks for 4 team members:
+
+| Team Member | Role | Route `image` key | Email Banner |
+| --- | --- | --- | --- |
+| **Jona Mae Cabusas**<br> | Leader
+
+ | `jona`<br> | `jona.mae.cabusas@chaoscrew.com`<br> |
+| **Cheeny Mae Tito**<br> | Member
+
+ | `cheeny`<br> | `cheeny.mae.tito@chaoscrew.com`<br> |
+| **Steven Lee Dave Armecin**<br> | Member
+
+ | `steven`<br> | `steven.lee.dave.armecin@chaoscrew.com`<br> |
+| **Clint Harold Barriga**<br> | Member
+
+ | `clint`<br> | `clint.harold.barriga@chaoscrew.com`<br> |
+
+---
+
+## 🛠 Tech Stack
+
+* **Core Framework**: React Native (with Expo)
 
 
+* **Navigation Router**: Expo Router (`router.push`, `router.back`, `useLocalSearchParams`)
+
+
+* **Language**: TypeScript (`.tsx`)
+
+
+* **UI Components**: `View`, `Text`, `Image`, `Button`, `Pressable`, `ScrollView`
+
+* **Styling**: React Native `StyleSheet`
+
+
+---
+
+## 💻 Code Architecture Highlights
+
+### Passing Data via Route Params (`index.tsx`)
+
+```typescript
+router.push({
+  pathname: '/profile',
+  params: {
+    image: 'jona',
+    name: 'Jona Mae Cabusas',
+    role: 'Leader',
+    bio: 'Leader kunuhay nga nagapanguna sa Chaos Crew project.😁',
+    love: 'Kdrama binge watching and singing',
+    fun: 'My ultimate rest day formula involves a fresh cup of coffee...',
+    email: 'jona.mae.cabusas@chaoscrew.com',
+  },
+});
+```[cite: 2]
+
+### Consuming Params Dynamically (`profile.tsx`)
+```typescript
+const { name, role, bio, love, fun, email, image } = useLocalSearchParams();
+
+// Dynamic local image lookup
+<Image
+  source={profileImages[(Array.isArray(image) ? image[0] : image) as keyof typeof profileImages]}
+  style={styles.avatarImage}
+/>
+```[cite: 1]
+
+```
