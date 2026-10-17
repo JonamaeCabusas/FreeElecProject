@@ -1,50 +1,60 @@
-# Welcome to your Expo app 👋
+Chaos Crew Project Activities App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A dark-mode, glassmorphic React Native application built with **Expo Router**. The app displays team member profiles and provides an interactive 4x4 matrix tracker for team tasks and goals.
 
-## Get started
 
-1. Install dependencies
+Features
 
-   ```bash
-   npm install
-   ```
+* **Interactive Task Tracker**: A $4 \times 4$ task grid with dynamic state tracking and live completion counters (e.g., `2/4`).
+* **Profile Navigation**: Team cards equipped with dynamic parameters (`name`, `role`, `bio`, etc.) passed via Expo Router to a detailed profile screen.
+* **Glassmorphism UI**: High-contrast, dark-theme styling using translucent layers, custom borders, and color accents.
+* **Fully Responsive Grid**: Strict 4-column layout engineered to scale cleanly across devices.
 
-2. Start the app
 
-   ```bash
-   npx expo start
-   ```
 
-In the output, you'll find options to open the app in a
+File Structure & Overview
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+File / Component | Type | Description |
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+ `HomeScreen.tsx` | Main Screen | Renders the primary dashboard containing team profiles and activity columns. |
+ `/profile` | Route | Destination page that receives and displays detailed member data. |
+ `assets/images/*` | Static Assets | Contains profile images (`jona.jpg`, `steven.jpg`, `cheeny.jpg`, `clint.jpg`). |
 
-## Get a fresh project
 
-When you're ready, run:
+How It Works
 
-```bash
-npm run reset-project
+1. Activity Matrix State
+
+The task grid is backed by a 2D array of boolean values. Toggling a task updates the matrix state and recalculates the progress counter for that column:
+
+```typescript
+const [columns, setColumns] = useState([
+  [false, false, false, false], // Column 1 (Jona)
+  [false, false, false, false], // Column 2 (Steven)
+  [false, false, false, false], // Column 3 (Cheeny)
+  [false, false, false, false], // Column 4 (Clint)
+]);
+
+
+
+2. Navigation with Parameters
+
+When a profile button is pressed, Expo Router passes team details directly to the `/profile` route:
+
+```typescript
+router.push({
+  pathname: '/profile',
+  params: { name: 'Jona Mae Cabusas', role: 'Leader', ... }
+});
+
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+Tech Stack
 
-To learn more about developing your project with Expo, look at the following resources:
+Framework**: React Native / Expo (Expo Router)
+Language**: TypeScript
+Styling**: `StyleSheet` (Dark Glassmorphism Theme)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Would you like help creating a full `README.md` file complete with installation steps, or setting up the matching `/profile` screen code?
